@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Sorting_algorithm/1.0.0": {
+        "runtime": {
+          "Sorting_algorithm.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Sorting_algorithm/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
