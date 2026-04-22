@@ -1,7 +1,4 @@
-﻿//// See https://aka.ms/new-console-template for more information
-//Console.WriteLine("Hello, World!");
-
-using Sorting_algorithm;
+﻿using Day_7_sorting_algorithm;
 using System;
 
 class LinearSearchClass
@@ -43,4 +40,3 @@ class Program
             Console.WriteLine("Binary Search: Element not found");
     }
 }
-

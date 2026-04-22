@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sorting_algorithm
+namespace Day_7_sorting_algorithm
 {
     class BinarySearchClass
     {

@@ -1,2 +1,17 @@
-# Auto detect text files and perform LF normalization
+# Auto detect text files and normalize line endings
 * text=auto
+
+# Ensure C# files use consistent line endings
+*.cs text diff=csharp
+
+# Solution and project files
+*.sln text
+*.csproj text
+
+# Treat binary files correctly
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.exe binary
+*.dll binary
