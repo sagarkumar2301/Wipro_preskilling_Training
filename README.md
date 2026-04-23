@@ -1,119 +1,89 @@
-# 🔍 Linear Search and Binary Search in C#
+# 🚀 Wipro NGA Pre-Skilling Training (C# - Progress)
 
 ## 📌 Overview
 
-This project demonstrates two fundamental searching algorithms:
-
-* **Linear Search**
-* **Binary Search**
-
-Both algorithms are implemented in C# to search for an element in an array.
+This repository contains my **practice programs and assignments** completed during the **Wipro NGA Pre-Skilling Training Program**, covering topics up to **Core C# concepts**.
 
 ---
 
-## 🚀 Algorithms Explained
+## 🧠 Topics Covered So Far
 
-### 1️⃣ Linear Search
+### 🔹 C# Fundamentals
 
-Linear Search checks each element one by one until the target element is found.
-
-**Time Complexity:**
-
-* Best Case: O(1)
-* Worst Case: O(n)
-
-**Use Case:**
-
-* Works on both sorted and unsorted data
+* Introduction to .NET & C#
+* Visual Studio & Program Structure
+* Data Types, Variables, Operators
+* Control Statements
+* Classes & Objects
 
 ---
 
-### 2️⃣ Binary Search
+### 🔹 Object-Oriented Programming (OOP)
 
-Binary Search works on **sorted arrays** by repeatedly dividing the search space into half.
-
-**Time Complexity:**
-
-* Best Case: O(1)
-* Worst Case: O(log n)
-
-**Use Case:**
-
-* Efficient for large, sorted datasets
+* Constructors
+* Static Members
+* Interfaces
+* Constants (`const`)
 
 ---
 
-## 🛠️ Technologies Used
+### 🔹 Core C# Concepts
 
-* C#
-* .NET
+* Collections
+* Generics (Class & Method)
+* Delegates & Events
+* Anonymous Methods
+* Lambda Expressions
+* Reflection
 
 ---
 
-## 📂 Project Structure
+## 📂 Repository Structure
 
-```
-Sorting_algorithm/
- ├── Program.cs
- ├── BinarySearchClass.cs
- ├── Sorting_algorithm.csproj
+Each file/folder represents a specific concept or program:
+
+```text id="w9c2pk"
+/CSharp_Basics
+/OOP
+/Generics
+/Delegates_Events
+/Anonymous_Lambda
+/Reflection
 ```
 
 ---
 
-## ▶️ How to Run
+## 🎯 Purpose
 
-1. Clone the repository:
-
-```
-git clone <your-repo-link>
-```
-
-2. Open in Visual Studio
-
-3. Build and Run the project
+* Strengthen understanding of **core C# concepts**
+* Practice real programming scenarios
+* Build a strong foundation for advanced .NET topics
 
 ---
 
-## 📌 Sample Input
+## 📈 Progress
 
-```
-Array: 10, 20, 30, 40, 50
-Search Element: 30
-```
-
-## ✅ Sample Output
-
-```
-Linear Search: Element found at index 2
-Binary Search: Element found at index 2
-```
+✔ Completed: Core C#
+⏳ Upcoming: Advanced C#, SQL, ASP.NET, Cloud
 
 ---
 
-## ⚠️ Important Notes
+## 💡 Note
 
-* Binary Search requires the array to be **sorted**
-* Linear Search works on any dataset
-
----
-
-## 📈 Comparison
-
-| Feature         | Linear Search | Binary Search |
-| --------------- | ------------- | ------------- |
-| Data Required   | Unsorted      | Sorted        |
-| Time Complexity | O(n)          | O(log n)      |
-| Efficiency      | Slower        | Faster        |
-
----
-
-## 💡 Conclusion
-
-Binary Search is more efficient than Linear Search for large datasets, but it requires sorted data. Linear Search is simple and works in all cases.
+This repository will be **continuously updated** as new topics are covered during the training.
 
 ---
 
 ## 👨‍💻 Author
 
 Sagar
+Engineering Student | C# Learner
+
+
+
+
+
+
+
+
+
