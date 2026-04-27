@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Library_management.Tests/Library_management.Tests.csproj" />
+  <Project Path="Library_Management_system/Library_Management_system.csproj" />
+</Solution>
