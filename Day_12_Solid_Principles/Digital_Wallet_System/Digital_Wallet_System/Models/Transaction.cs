@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Digital_Wallet_System.Models
 {
+    //SRP
     public class Transaction
     {
         public double Amount { get; set; }

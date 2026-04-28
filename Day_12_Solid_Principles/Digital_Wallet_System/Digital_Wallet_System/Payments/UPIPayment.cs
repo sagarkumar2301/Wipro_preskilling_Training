@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Digital_Wallet_System.Payments
 {
+    //LSP
     public class UPIPayment : IPayment
     {
         public void Pay(double amount)
