@@ -2,7 +2,7 @@
 
 ## 📌 Overview
 
-This repository contains my **practice programs and assignments** completed during the **Wipro NGA Pre-Skilling Training Program**, covering topics up to **Core C# concepts**.
+This repository contains my **practice programs and assignments** completed during the **Wipro NGA Pre-Skilling Training Program**, covering topics up to **# Asp.Net Core(Razor Pages & MVC concepts)**.
 
 ---
 
@@ -37,7 +37,40 @@ This repository contains my **practice programs and assignments** completed duri
 * Reflection
 
 ---
+### Advanced C#
+* Delegates
+* Reflections
+* Unit Testing & TDD
+* SOLID Principles & Design Pattern
+  
+## Basics of Microsoft SQL Server
+* SQL Server Connection
+* Data Types
+* VariablesKeys & Constraints
+* OperatorsDML / DDL / DCL / TCL Commands
+* Functions
+* Clauses
+* Joins
+* Subqueries
+* Triggers
+* Indexes
+* Views
+* Normalization
 
+## Asp.Net Core (Razor Pages & MVC)
+* Web Application Framework
+* Middleware
+* Razor Pages
+* Razor Syntax
+* Page Model
+* Property Binding
+* ViewsRouting
+* MVC ArchitectureModel Binding
+* Tag Helpers
+* Validations (Data Annotation, Server/Client Side)
+* Cookies
+* MVC Filters
+ 
 ## 📂 Repository Structure
 
 Each file/folder represents a specific concept or program:
