@@ -1,0 +1,24 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<h2>Welcome to the Employee Feedback Portal using Razor pages Asp.Net Core...!!!</h2>
+
+<form method ="Post">
+@* two way binding *@
+<label>please provide your feedback:</label>
+<textarea asp-for="Feedback"></textarea>
+
+@* validation *@
+<span asp-validation-for="Feedback" style ="color:red"></span>
+<br />
+<button type="submit">Submit</button>
+
+</form>
+
+@if (Model.Message != null)
+{
+   <p style=" color:lawngreen">@Model.Message</p>
+}
