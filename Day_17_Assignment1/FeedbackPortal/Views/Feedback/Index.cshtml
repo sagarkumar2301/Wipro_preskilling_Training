@@ -1,0 +1,70 @@
+@model FeedbackPortal.Models.Feedback
+
+@{
+    ViewData["Title"] = "Feedback Form";
+}
+
+<h2>Customer Feedback Form</h2>
+
+<form asp-action="Index" method="post">
+
+    <div class="mb-3">
+        <label>Name</label>
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+    </div>
+
+    <div class="mb-3">
+        <label>Email</label>
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+    </div>
+
+    <div class="mb-3">
+        <label>Rating</label>
+
+        @Html.DropDownListFor(m => m.Rating,
+            new List<SelectListItem>
+            {
+                new SelectListItem { Text="1", Value="1"},
+                new SelectListItem { Text="2", Value="2"},
+                new SelectListItem { Text="3", Value="3"},
+                new SelectListItem { Text="4", Value="4"},
+                new SelectListItem { Text="5", Value="5"}
+            },
+            "Select Rating",
+            new { @class="form-control"})
+    </div>
+
+    <div class="mb-3">
+        <label>Comments</label>
+        @Html.TextAreaFor(m => m.Comments,
+            new { @class = "form-control" })
+    </div>
+
+    <div class="mb-3">
+        <label>Custom HTML Helper</label>
+        @Html.StyledInput("CustomField", "Enter custom value")
+    </div>
+
+    <div class="mb-3">
+        <label>Star Rating Widget</label>
+        <star-rating stars="5"></star-rating>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Submit
+    </button>
+
+</form>
+
+<br />
+
+<a asp-action="ViewFeedback">
+    View Submitted Feedback
+</a>
+
+@if(ViewBag.Message != null)
+{
+    <div class="alert alert-success mt-3">
+        @ViewBag.Message
+    </div>
+}
