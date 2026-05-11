@@ -1,0 +1,29 @@
+﻿@model OnlineBookStoreApp.Models.Book
+
+<h2>Add Book</h2>
+
+<form method="post">
+
+    <div>
+        <label>Title</label>
+        <input asp-for="Title" />
+    </div>
+
+    <div>
+        <label>Author</label>
+        <input asp-for="Author" />
+    </div>
+
+    <div>
+        <label>ISBN</label>
+        <input asp-for="ISBN" />
+    </div>
+
+    <div>
+        <label>Price</label>
+        <input asp-for="Price" />
+    </div>
+
+    <button type="submit">Save</button>
+
+</form>

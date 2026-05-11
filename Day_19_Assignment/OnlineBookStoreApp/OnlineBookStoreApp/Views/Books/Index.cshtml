@@ -1,0 +1,22 @@
+﻿@model List<OnlineBookStoreApp.Models.Book>
+
+<h2>Books List</h2>
+
+<a asp-action="Create">Add Book</a>
+
+<table class="table">
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Price</th>
+    </tr>
+
+    @foreach (var book in Model)
+    {
+        <tr>
+            <td>@book.Title</td>
+            <td>@book.Author</td>
+            <td>@book.Price</td>
+        </tr>
+    }
+</table>
