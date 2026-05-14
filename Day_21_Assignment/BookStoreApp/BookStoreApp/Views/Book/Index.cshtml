@@ -1,0 +1,33 @@
+﻿@model List<BookStoreApp.Models.Book>
+
+<h2>Book List</h2>
+
+<a asp-action="Create">Add New Book</a>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.BookId</td>
+            <td>@item.Title</td>
+            <td>@item.Author</td>
+            <td>@item.Price</td>
+            <td>@item.Quantity</td>
+
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.BookId">
+                    Delete
+                </a>
+            </td>
+        </tr>
+    }
+</table>
