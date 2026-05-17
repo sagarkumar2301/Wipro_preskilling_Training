@@ -1,0 +1,22 @@
+@model IEnumerable<LibraryManagementSystem.Models.Book>
+
+<h2>Books</h2>
+
+<table class="table">
+
+    <tr>
+        <th>Book ID</th>
+        <th>Title</th>
+        <th>Author</th>
+    </tr>
+
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.BookID</td>
+            <td>@item.Title</td>
+            <td>@item.Author?.Name</td>
+        </tr>
+    }
+
+</table>

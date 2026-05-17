@@ -1,0 +1,17 @@
+@model LibraryManagementSystem.Models.Genre
+
+<h2>Create Genre</h2>
+
+<form asp-action="Create" method="post">
+
+    <div>
+        <label>Genre Name</label>
+
+        <input asp-for="GenreName" class="form-control" />
+    </div>
+
+    <br />
+
+    <button type="submit">Save</button>
+
+</form>

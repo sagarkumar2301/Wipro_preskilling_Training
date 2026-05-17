@@ -1,0 +1,26 @@
+@model IEnumerable<LibraryManagementSystem.Models.Genre>
+
+<h2>Genres</h2>
+
+<a asp-action="Create">Add Genre</a>
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Genre Name</th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.GenreID</td>
+            <td>@item.GenreName</td>
+
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.GenreID">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.GenreID">Delete</a>
+            </td>
+        </tr>
+    }
+</table>

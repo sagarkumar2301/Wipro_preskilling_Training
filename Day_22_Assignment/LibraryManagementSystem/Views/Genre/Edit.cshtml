@@ -1,0 +1,19 @@
+@model LibraryManagementSystem.Models.Genre
+
+<h2>Edit Genre</h2>
+
+<form asp-action="Edit">
+
+    <input type="hidden" asp-for="GenreID" />
+
+    <div>
+        <label>Genre Name</label>
+
+        <input asp-for="GenreName" class="form-control" />
+    </div>
+
+    <br />
+
+    <button type="submit">Update</button>
+
+</form>
