@@ -1,0 +1,98 @@
+﻿@model IEnumerable<LibraryManagementSystem.Models.Book>
+
+<h2>Books List</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author Id</th>
+            <th>Genre Id</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody id="bookTable">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.AuthorId</td>
+                <td>@item.GenreId</td>
+
+                <td>
+                    <button class="btn btn-danger deleteBtn"
+                            data-id="@item.BookId">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h3>Add Book</h3>
+
+<input type="text" id="title" placeholder="Book Title" />
+
+<input type="number" id="authorId" placeholder="Author Id" />
+
+<input type="number" id="genreId" placeholder="Genre Id" />
+
+<button id="addBookBtn" class="btn btn-primary">
+    Add Book
+</button>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $("#addBookBtn").click(function () {
+
+    var book = {
+    title: $("#title").val(),
+    authorId: $("#authorId").val(),
+    genreId: $("#genreId").val()
+    };
+
+    $.ajax({
+    url: '/Book/Create',
+    type: 'POST',
+    data: book,
+    success: function (response) {
+
+    if (response.success) {
+    alert(response.message);
+    location.reload();
+    }
+    else {
+    alert(response.message);
+    }
+    },
+    error: function () {
+    alert("Error occurred");
+    }
+    });
+    });
+
+    $(".deleteBtn").click(function () {
+
+    var id = $(this).data("id");
+
+    $.ajax({
+    url: '/Book/Delete',
+    type: 'POST',
+    data: { id: id },
+
+    success: function (response) {
+
+    if (response.success) {
+    alert("Deleted Successfully");
+    location.reload();
+    }
+    },
+    error: function () {
+    alert("Delete Failed");
+    }
+    });
+    });
+</script>
