@@ -1,0 +1,11 @@
+﻿@model FeedbackPortal.Models.UserComment
+
+<h2 style="color: green;">Thank you for your feedback!</h2>
+
+<div style="border: 1px solid #ccc; padding: 15px; width: 300px; margin-top: 20px;">
+    <p><strong>Name:</strong> @Model.Name</p>
+    <p><strong>Comment:</strong> <br /> @Model.CommentText</p>
+</div>
+
+<br />
+<a asp-action="Create">Submit another comment</a>

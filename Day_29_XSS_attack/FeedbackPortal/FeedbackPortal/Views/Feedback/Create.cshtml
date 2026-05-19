@@ -1,0 +1,27 @@
+﻿@model FeedbackPortal.Models.UserComment
+
+<h2>Submit Feedback</h2>
+
+<form asp-action="Create" method="post">
+    <div style="margin-bottom: 15px;">
+        <label asp-for="Name" style="display:block; font-weight:bold;"></label>
+        <input asp-for="Name" style="width: 300px;" />
+        <br />
+        <span asp-validation-for="Name" style="color: red;"></span>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+        <label asp-for="CommentText" style="display:block; font-weight:bold;">Comment</label>
+        <textarea asp-for="CommentText" style="width: 300px; height: 100px;"></textarea>
+        <br />
+        <span asp-validation-for="CommentText" style="color: red;"></span>
+    </div>
+
+    <button type="submit" style="padding: 5px 15px;">Submit</button>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
