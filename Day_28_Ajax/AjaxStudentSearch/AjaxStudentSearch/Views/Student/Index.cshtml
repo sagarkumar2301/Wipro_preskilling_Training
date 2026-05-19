@@ -1,0 +1,99 @@
+﻿@{
+    ViewData["Title"] = "Student Search";
+}
+
+<div class="student-search-page">
+    <section class="student-hero">
+        <p class="eyebrow">AJAX Based Student Registration Search System</p>
+        <h1>Search Student Details</h1>
+        <p>Enter a Student ID and fetch registration details dynamically without refreshing the page.</p>
+    </section>
+
+    <section class="search-card">
+        <div class="mb-3">
+            <label for="studentId" class="form-label">Student ID</label>
+            <input type="number" class="form-control" id="studentId" placeholder="Try 101, 102, 103, or 104" />
+        </div>
+
+        <button type="button" id="btnSearch" class="btn btn-primary">Search Student</button>
+
+        <div id="message" class="alert mt-4 d-none" role="alert"></div>
+
+        <div id="studentResult" class="student-result d-none">
+            <h2 id="studentName"></h2>
+            <dl>
+                <div>
+                    <dt>Student ID</dt>
+                    <dd id="resultStudentId"></dd>
+                </div>
+                <div>
+                    <dt>Course</dt>
+                    <dd id="resultCourse"></dd>
+                </div>
+                <div>
+                    <dt>Email</dt>
+                    <dd id="resultEmail"></dd>
+                </div>
+                <div>
+                    <dt>Phone</dt>
+                    <dd id="resultPhone"></dd>
+                </div>
+            </dl>
+        </div>
+    </section>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            function showMessage(text, type) {
+                $("#message")
+                    .removeClass("d-none alert-success alert-danger alert-warning")
+                    .addClass("alert-" + type)
+                    .text(text);
+            }
+
+            function hideResult() {
+                $("#studentResult").addClass("d-none");
+            }
+
+            $("#btnSearch").click(function () {
+                const studentId = $("#studentId").val();
+
+                $("#message").addClass("d-none").text("");
+                hideResult();
+
+                if (!studentId) {
+                    showMessage("Please enter Student ID.", "warning");
+                    return;
+                }
+
+                $.ajax({
+                    url: '@Url.Action("SearchStudent", "Student")',
+                    type: 'GET',
+                    data: { studentId: studentId },
+                    success: function (response) {
+                        $("#studentName").text(response.name);
+                        $("#resultStudentId").text(response.studentId);
+                        $("#resultCourse").text(response.course);
+                        $("#resultEmail").text(response.email);
+                        $("#resultPhone").text(response.phone);
+                        $("#studentResult").removeClass("d-none");
+                        showMessage("Student details loaded successfully.", "success");
+                    },
+                    error: function (xhr) {
+                        const message = xhr.responseJSON?.message || "Unable to fetch student details. Please try again.";
+                        hideResult();
+                        showMessage(message, "danger");
+                    }
+                });
+            });
+
+            $("#studentId").keypress(function (event) {
+                if (event.which === 13) {
+                    $("#btnSearch").click();
+                }
+            });
+        });
+    </script>
+}
