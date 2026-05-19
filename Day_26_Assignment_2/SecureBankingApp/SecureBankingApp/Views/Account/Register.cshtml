@@ -1,0 +1,45 @@
+﻿@model SecureBankingApp.Models.User
+
+<h2>Secure User Registration</h2>
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Success"]
+    </div>
+}
+
+<form asp-action="Register" method="post">
+
+    @Html.AntiForgeryToken()
+
+    <div>
+        <label>Full Name</label>
+        <input asp-for="FullName" class="form-control" />
+    </div>
+
+    <div>
+        <label>Email</label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+
+    <div>
+        <label>Password</label>
+        <input type="password" name="password" class="form-control" />
+    </div>
+
+    <div>
+        <label>Financial Info</label>
+        <input asp-for="FinancialInfo" class="form-control" />
+    </div>
+
+    <br />
+
+    <button type="submit" class="btn btn-primary">
+        Register
+    </button>
+</form>
+
+@if (ViewBag.Message != null)
+{
+    <p>@ViewBag.Message</p>
+}
