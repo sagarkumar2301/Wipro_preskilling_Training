@@ -1,0 +1,36 @@
+name: CI-CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - cloud-devops-assignment
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: CloudAssignment/backend
+
+    steps:
+
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Tests
+        run: npm test
