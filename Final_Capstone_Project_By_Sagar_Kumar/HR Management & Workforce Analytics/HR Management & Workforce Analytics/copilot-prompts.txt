@@ -1,0 +1,9 @@
+Generate Employee CRUD operations using ASP.NET Core MVC.
+Generate Leave Request CRUD functionality.
+Generate JWT Authentication setup.
+Generate Role-Based Authorization.
+Generate Audit Log implementation.
+Generate Dashboard analytics cards.
+Generate GitHub Actions CI/CD workflow.
+Generate Dockerfile for ASP.NET Core application.
+Generate Export to Excel functionality.
