@@ -16,8 +16,10 @@ namespace HR_Management___Workforce_Analytics.Models
         [EmailAddress]
         public string Email { get; set; }
 
+        [Required]
         public string Department { get; set; }
 
+        [Required]
         public string Designation { get; set; }
 
         public DateTime JoiningDate { get; set; }

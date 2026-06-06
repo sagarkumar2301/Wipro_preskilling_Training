@@ -9,6 +9,33 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
+<a asp-action="ExportToExcel"
+   class="btn btn-success mb-3">
+    Export Employees
+</a>
+<form method="get">
+
+    <input type="text"
+           name="searchString"
+           placeholder="Search Employee"
+           class="form-control mb-2" />
+
+    <select name="department" class="form-control mb-2">
+        <option value="">All Departments</option>
+        <option value="HR">HR</option>
+        <option value="IT">IT</option>
+        <option value="Finance">Finance</option>
+        <option value="Sales">Sales</option>
+    </select>
+
+    <button type="submit" class="btn btn-primary">
+        Search
+    </button>
+
+</form>
+
+<br />
 <table class="table">
     <thead>
         <tr>
@@ -61,9 +88,11 @@
                 @Html.DisplayFor(model => item.IsActive)
             </td>
             <td>
+                    
                 <a asp-action="Edit" asp-route-id="@item.EmployeeId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.EmployeeId">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.EmployeeId">Delete</a>
+                   
             </td>
         </tr>
 }

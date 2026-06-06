@@ -9,6 +9,34 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<form method="get">
+
+    <select name="status" class="form-control mb-2">
+
+        <option value="">All Status</option>
+
+        <option value="Pending">
+            Pending
+        </option>
+
+        <option value="Approved">
+            Approved
+        </option>
+
+        <option value="Rejected">
+            Rejected
+        </option>
+
+    </select>
+
+    <button type="submit"
+            class="btn btn-primary">
+        Filter
+    </button>
+
+</form>
+
+<br />
 <table class="table">
     <thead>
         <tr>
@@ -58,12 +86,26 @@
                 @Html.DisplayFor(model => item.Reason)
             </td>
             <td>
-                @Html.DisplayFor(model => item.Status)
+                    @if (item.Status == "Approved")
+                    {
+                        <span class="badge bg-success">Approved</span>
+                    }
+                    else if (item.Status == "Rejected")
+                    {
+                        <span class="badge bg-danger">Rejected</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-warning">Pending</span>
+                    }
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.LeaveRequestId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.LeaveRequestId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.LeaveRequestId">Delete</a>
+                <a asp-action="Delete" asp-route-id="@item.LeaveRequestId">Delete</a> |
+                <a asp-action="Approve" asp-route-id="@item.LeaveRequestId">Approve</a> |
+                <a asp-action="Reject" asp-route-id="@item.LeaveRequestId">Reject</a> |
+                
             </td>
         </tr>
 }

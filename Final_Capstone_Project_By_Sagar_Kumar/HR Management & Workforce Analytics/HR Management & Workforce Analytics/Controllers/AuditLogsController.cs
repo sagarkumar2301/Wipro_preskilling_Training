@@ -14,5 +14,10 @@ namespace HR_Management___Workforce_Analytics.Controllers
             _auditLogRepository = auditLogRepository;
         }
 
+        public async Task<IActionResult> Index()
+        {
+            var logs = await _auditLogRepository.GetAllAsync();
+            return View(logs);
+        }
     }
 }

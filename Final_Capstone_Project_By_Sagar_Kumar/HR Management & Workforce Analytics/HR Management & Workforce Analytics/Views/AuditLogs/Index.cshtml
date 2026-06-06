@@ -1,0 +1,27 @@
+﻿@model IEnumerable<HR_Management___Workforce_Analytics.Models.AuditLog>
+@{
+    ViewData["Title"] = "Audit Logs";
+}
+
+<h1>Audit Logs</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Action Performed</th>
+            <th>User Name</th>
+            <th>Created Date</th>
+         
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var log in Model)
+        {
+            <tr>
+                <td>@log.ActionPerformed</td>
+                <td>@log.UserName</td>
+                <td>@log.CreatedDate</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -15,8 +15,10 @@ namespace HR_Management___Workforce_Analytics.Models
         [Required]
         public string LeaveType { get; set; }
 
+        [Required]
         public DateTime StartDate { get; set; }
 
+        [Required]
         public DateTime EndDate { get; set; }
 
         public string? Reason { get; set; }

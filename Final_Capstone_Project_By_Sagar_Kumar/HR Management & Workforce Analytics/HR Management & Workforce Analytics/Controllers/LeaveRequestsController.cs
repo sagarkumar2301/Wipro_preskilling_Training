@@ -4,20 +4,34 @@ using Microsoft.EntityFrameworkCore;
 using HR_Management___Workforce_Analytics.Models;
 using HR_Management___Workforce_Analytics.Data;
 using HR_Management___Workforce_Analytics.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
+//[Authorize(Roles = "Admin")]
 public class LeaveRequestsController : Controller
 {
     private readonly ILeaveRequestRepository _leaveRequestRepository;
 
-    public LeaveRequestsController(ILeaveRequestRepository leaveRequestRepository)
+    private readonly IAuditLogRepository _auditLogRepository;
+
+    public LeaveRequestsController(ILeaveRequestRepository leaveRequestRepository, IAuditLogRepository auditLogRepository)
     {
         _leaveRequestRepository = leaveRequestRepository;
+        _auditLogRepository = auditLogRepository;
     }
 
     // GET: LEAVEREQUESTS
-    public async Task<IActionResult> Index()    
+    public async Task<IActionResult> Index(string status)
     {
-        return View(await _leaveRequestRepository.GetAllAsync());
+        var leaveRequests = await _leaveRequestRepository.GetAllAsync();
+
+        if (!string.IsNullOrEmpty(status))
+        {
+            leaveRequests = leaveRequests
+                .Where(l => l.Status == status)
+                .ToList();
+        }
+
+        return View(leaveRequests);
     }
 
     // GET: LEAVEREQUESTS/Details/5
@@ -52,7 +66,15 @@ public class LeaveRequestsController : Controller
     {
         if (ModelState.IsValid)
         {
+            leaverequest.Status = "Pending";
             await _leaveRequestRepository.AddAsync(leaverequest);
+            await _auditLogRepository.AddAsync(new AuditLog
+            {
+                ActionPerformed = "Leave Request Create",
+                UserName = "Admin",
+                CreatedDate = DateTime.Now
+            });
+            await _auditLogRepository.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
         return View(leaverequest);
@@ -91,6 +113,13 @@ public class LeaveRequestsController : Controller
             try
             {
                 await _leaveRequestRepository.UpdateAsync(leaverequest);
+                await _auditLogRepository.AddAsync(new AuditLog
+                {
+                    ActionPerformed = "Leave Request Edit",
+                    UserName = "Admin",
+                    CreatedDate = DateTime.Now
+                });
+                await _auditLogRepository.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -134,9 +163,89 @@ public class LeaveRequestsController : Controller
         if (leaverequest != null)
         {
             await _leaveRequestRepository.DeleteAsync(id.Value);
+            await _auditLogRepository.AddAsync(new AuditLog
+            {
+                ActionPerformed = "Leave Request Delete",
+                UserName = "Admin",
+                CreatedDate = DateTime.Now
+            });
         }
 
-        await _leaveRequestRepository.SaveChangesAsync();
+        await _auditLogRepository.SaveChangesAsync();
+        return RedirectToAction(nameof(Index));
+    }
+    public async Task<IActionResult> Approve(int id)
+    {
+        var leaveRequest = await _leaveRequestRepository.GetByIdAsync(id);
+
+        if (leaveRequest == null)
+        {
+            return NotFound();
+        }
+
+        leaveRequest.Status = "Approved";
+
+        await _leaveRequestRepository.UpdateAsync(leaveRequest);
+
+        // Audit Log here
+        await _auditLogRepository.AddAsync(new AuditLog
+        {
+            ActionPerformed = "Leave Request Approved",
+            UserName = "Admin",
+            CreatedDate = DateTime.Now
+        });
+
+        await _auditLogRepository.SaveChangesAsync();
+
+        // Return should be LAST
+        return RedirectToAction(nameof(Index));
+    }
+    public async Task<IActionResult> Reject(int id)
+    {
+        var leaveRequest = await _leaveRequestRepository.GetByIdAsync(id);
+
+        if (leaveRequest == null)
+        {
+            return NotFound();
+
+        }
+        leaveRequest.Status = "Rejected";
+
+        await _leaveRequestRepository.UpdateAsync(leaveRequest);
+
+        await _auditLogRepository.AddAsync(new AuditLog
+        {
+            ActionPerformed = "Leave Request Rejected",
+            UserName = "Admin",
+            CreatedDate = DateTime.Now
+        });
+
+        await _auditLogRepository.SaveChangesAsync();
+
+        return RedirectToAction(nameof(Index));
+    }
+    public async Task<IActionResult> Pending(int id)
+    {
+        var leaveRequest = await _leaveRequestRepository.GetByIdAsync(id);
+
+        if (leaveRequest == null)
+        {
+            return NotFound();
+        }
+
+        leaveRequest.Status = "Pending";
+
+        await _leaveRequestRepository.UpdateAsync(leaveRequest);
+
+        await _auditLogRepository.AddAsync(new AuditLog
+        {
+            ActionPerformed = "Leave Request Marked as Pending",
+            UserName = "Admin",
+            CreatedDate = DateTime.Now
+        });
+
+        await _auditLogRepository.SaveChangesAsync();
+
         return RedirectToAction(nameof(Index));
     }
 
@@ -144,4 +253,7 @@ public class LeaveRequestsController : Controller
     {
         return _leaveRequestRepository.GetByIdAsync(id.Value) != null;
     }
+
+    
+    
 }
