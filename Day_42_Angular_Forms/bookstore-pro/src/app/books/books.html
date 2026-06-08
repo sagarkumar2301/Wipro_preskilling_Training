@@ -1,0 +1,16 @@
+<h1>BookStore Pro</h1>
+
+<h2>Manual Subscription</h2>
+
+<app-book-card
+  *ngFor="let book of books"
+  [book]="book">
+</app-book-card>
+
+<hr>
+
+<h2>Async Pipe Example</h2>
+
+<div *ngFor="let book of books$ | async">
+  <app-book-card [book]="book"></app-book-card>
+</div>
